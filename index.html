@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <title>
+        Growler
+    </title>
+</head>
+<style>
+    .cssStyle {
+        color: red;
+    }
+
+    .font {
+        font-size: 40px;
+    }
+
+    .onlineBorder {
+        border: 1px solid blue;
+    }
+</style>
+
+<body>
+    <div id="growler">
+        <h2>
+            {{ appName }}
+        </h2>
+
+        <!-- one time binding -->
+        <h2 v-once="noChange">{{ noChange }}</h2>
+
+        <!-- v-html -->
+        <h2 v-html="link">{{ link }}</h2>
+
+        <!-- v-bind -->
+        <!-- for font family, do camelCase (fontFamily) -->
+        <h2 :style="styling"> {{ appName }}</h2>
+
+        <!-- bind to specific css properties -->
+        <h2 :style="[styling, styling2]"> {{ appName }}</h2>
+
+        <!-- getting css classes from an array -->
+        <h2 :style="styling2" :class="[colorFromCSS, fontFromCSS]"> {{ appName }}</h2>
+
+        <!-- conditionally apply css classes to an element. also getting css classes from an object -->
+        <h2 :class="{'cssStyle': true, 'font': true, 'onlineBorder': isOnline}">{{ appName }}</h2>
+    </div>
+
+    <!-- Instance of vue - view -->
+    <!-- v-text - text directive -->
+</body>
+<script type="text/javascript" src="https://unpkg.com/vue"></script>
+<script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+    var growler = new Vue({
+        el: '#growler',
+        data: {
+            appName: 'Growler',
+            noChange: 'This text directive cannot be changed',
+            link: '<a href="https://www.youtube.com"><h2>Click here for youtube</h2></a>',
+            styling: {
+                color: '#FF6A00',
+                fontFamily: 'Courier New'
+            },
+
+            styling2: {
+                fontSize: 40
+            },
+
+            fontFromCSS: 'font', //variable: css-class
+
+            colorFromCSS: 'cssStyle',
+
+            isOnline: false
+
+
+        }
+    });
+</script>
+
+</html>

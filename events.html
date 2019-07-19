@@ -1,0 +1,162 @@
+<html>
+
+<head>
+    <title>
+        Growler
+    </title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div id="growler">
+        <h1>Event Handlers</h1>
+        <!-- instead of @ we can also use v-on: -->
+        <button @click="executeSearch('token', $event)">Search</button>
+
+        <h1>Prevent Modifier</h1>
+        <form action="#" method="GET">
+            <input v-model="query2" id="query2" name="query2">
+            <!-- the .prevent will prevent the page from reloading when you submit nothing -->
+            <button type="submit" @click.prevent="executeSearch2">
+                Search
+            </button>
+        </form>
+
+        <h1>Once Modifier</h1>
+        <form action="someUrl" method="POST">
+            <input type="search" v-model="query3" v-bind:disabled="isRunning">
+            <button type="button" @click.once="executeSearch3" v-bind:disabled="isRunning">
+                Search
+            </button>
+        </form>
+
+        <h1>Reacting to Keyed Events</h1>
+        <form class="form-horizontal" v-on:submit.prevent action="/events.html" method="GET">
+            <p>
+                This example demonstrates handling the "enter" key press via the <code>enter</code> modifier.
+            </p>
+
+            <div class="form-group">
+                <input class="form-control" type="search" v-model="query4" v-on:keyup="evaluateKey"
+                    v-on:keyup.enter="executeSearch4" autofocus />
+                <button type="button" v-on:click.once="executeSearch4" class="btn btn-primary">Search</button>
+            </div>
+
+            <br />
+            <div class="form-group">
+                <label for="logTextarea">Event Log (<a href="#" v-on:click="clearHistory">clear</a>)</label>
+                <textarea class="form-control" v-model="history" rows="15"></textarea>
+            </div>
+        </form>
+
+        <h1>Using key modifiers</h1>
+        <div id="growler" v-on:keydown.f1="openInfo">
+            <form class="form-horizontal">
+                <p>
+                    This example demonstrates using custom modifiers. With the <code>textarea</code> focused, press the
+                    "F1" key.
+                </p>
+
+                <br />
+                <div class="form-group">
+                    <label for="logTextarea">Event Log (<a href="#" v-on:click="clearHistory">clear</a>)</label>
+                    <textarea class="form-control" v-model="history2" rows="15"></textarea>
+                </div>
+            </form>
+        </div>
+
+        <h1>Left click</h1>
+        <form class="form-horizontal">
+            <p>
+                This example demonstrates how to handle the "left" mouse button.
+            </p>
+
+            <div class="form-group" v-on:click.left="onLeftMouseButtonClick">
+                <input class="form-control" type="search" v-model="query" autofocus />
+                <button type="button" class="btn btn-primary">Search</button>
+            </div>
+
+            <br />
+            <div class="form-group">
+                <label for="logTextarea">Event Log (<a href="#" v-on:click="clearHistory">clear</a>)</label>
+                <textarea class="form-control" v-model="history3" rows="15"></textarea>
+            </div>
+        </form>
+    </div>
+
+    <!-- Instance of vue - view -->
+    <!-- v-text - text directive -->
+</body>
+<script type="text/javascript" src="https://unpkg.com/vue"></script>
+<script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+    Vue.config.keyCodes = {
+        f1: 112
+    };
+
+    var growler = new Vue({
+        el: '#growler',
+        data: {
+            query: 'Button is pressed!',
+            query2: '',
+            query3: '',
+            query4: '',
+            isRunning: false,
+            history: '',
+            history2: '',
+            history3: ''
+        },
+        methods: {
+            executeSearch: function (t, e) {
+                var msg = 'Token: ' + t + ' Query: ' + this.query + ' Button: ' + e.target.innerText;
+                alert(msg);
+            },
+
+            executeSearch2: function () {
+                if (this.query2) {
+                    document.forms[0].submit();
+                } else {
+                    alert('Please enter a query');
+                }
+            },
+
+            executeSearch3: function () {
+                this.isRunning = true;
+                document.forms[0].submit();
+            },
+
+            evaluateKey: function (e) {
+                var code = (e.keyCode ? e.keyCode : e.which);
+                this.history += 'key clicked: "' + e.key + '" (' + code + ')\n';
+            },
+
+            executeSearch4: function () {
+                if (this.query) {
+                    this.history += 'Search button clicked. Query "' + this.query4 + '" was entered.\n';
+                }
+            },
+
+            clearHistory: function () {
+                this.history = '';
+                this.history2 = '';
+                this.history3 = '';
+            },
+
+            openInfo: function (e) {
+                e.preventDefault();
+                this.history2 += 'F1 has been pressed!\n';
+            },
+
+            onLeftMouseButtonClick: function () {
+                this.history3 += 'The left mouse button was pressed in the search box.\n';
+                this.query = '';
+            }
+
+
+        }
+    });
+</script>
+
+</html>

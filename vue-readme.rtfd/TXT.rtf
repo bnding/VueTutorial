@@ -1,0 +1,420 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf500
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Monaco;
+\f3\froman\fcharset0 Times-Roman;\f4\fswiss\fcharset0 Helvetica;\f5\fswiss\fcharset0 Helvetica-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red34\green95\blue170;\red255\green255\blue255;\red56\green174\blue111;
+\red65\green65\blue65;\red93\green93\blue93;\red30\green42\blue57;\red37\green52\blue67;\red201\green29\blue5;
+\red0\green0\blue233;\red0\green0\blue233;}
+{\*\expandedcolortbl;;\cssrgb\c16724\c45878\c72483;\cssrgb\c100000\c100000\c100000\c0;\cssrgb\c25746\c72474\c51121;
+\cssrgb\c32263\c32263\c32142;\cssrgb\c44066\c44066\c43901;\cssrgb\c15359\c22037\c28684;\cssrgb\c18895\c26749\c33393;\cssrgb\c83796\c19415\c0;
+\cssrgb\c0\c0\c93333;\cssrgb\c0\c0\c93333;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid2\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww25100\viewh12160\viewkind0
+\deftab560
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\b\fs32 \cf0 Why use vue?
+\f1\b0\fs24 \
+\pard\pardeftab560\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 Simplicity\
+Speed\
+Approachable framework\
+Simplify development\
+Remove the burden of managing the DOM\
+\pard\pardeftab560\pardirnatural\partightenfactor0
+\ls1\ilvl1\cf0 Changing the DOM is expensive. Saves time\
+Recalculation blocks the user\
+\pard\pardeftab560\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 Updates happen automatically\
+Small file size\
+Virtual Dom\
+\pard\pardeftab560\pardirnatural\partightenfactor0
+\ls1\ilvl1\cf0 Lightweight copy of the actual Dom\
+Efficiently determines what needs to be updated\
+Batches updates\
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0 \
+Mounting an instance of Vue - when your view becomes visible to the user\
+\pard\pardeftab560\slleading20\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0 Never set the el option to the 
+\f0\b html
+\f1\b0  or 
+\f0\b body
+\f1\b0  elements in a web page\
+\pard\pardeftab560\slleading20\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\b\fs32 \cf0 Lifecycle of Vue
+\fs24 \
+\
+
+\f1\b0 new Vue() \'97> creation \'97> mounting \'97> updating \'97> destroy\
+Each state has a before and after\
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\b \cf0 Creation
+\f1\b0 \
+1. beforeCreate\
+2. Initialize State\
+3. created\
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0 \ul \ulc0 After creation stage is over, the template will compile and go to mounting stage\ulnone \
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\b \cf0 Mounting
+\f1\b0 \
+1. beforeMount\
+2. Create Virtual DOM\
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0 \ul \ulc0 Will now listen to data changes\ulnone \
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\b \cf0 Updating\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f1\b0 \cf0 1. beforeUpdate\
+2. Re-Render Virtual DOM (patches)\
+3. Updated\
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\b \cf0 Destroy
+\f1\b0 \
+1. beforeDestroy\
+2. Teardown Virtual DOM\
+3. destroyed\
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\b\fs32 \cf0 Data properties\
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\fs24 \cf0 Data Property Caveat #1
+\fs32 \
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f1\b0\fs24 \cf0 * You can only modify properties\
+* You can\'92t add properties at runtime\
+* You can\'92t remove properties at runtime\
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\b \cf0 Data Property Caveat #2
+\f1\b0 \
+* Vue adds getters and setters to make the data properties reactive\
+	* Console inspections will not help much. Use vue devtools on chrome\
+\
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\b\fs32 \cf0 Property Values
+\f1\b0 \
+
+\fs24 Allows primitive values\
+	123, \'93abc\'94, \'932017-02-14\'94, [1,2,3]\
+Does not support native objects\
+	Number, String, Date, Array\
+\
+\
+
+\f0\b\fs32 Directives (Declarative Bindings)\
+
+\f1\b0\fs24 \
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\b \cf0 v-text\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f1\b0 \cf0 * Updates the element\'92s text content\
+* Interpolates a property value as an HTML element\'92s text\
+* Binds element\'92s entire content to a property\
+* Dynamic changing\
+\pard\pardeftab720\sl380\partightenfactor0
+
+\f2 \cf2 \cb3 \expnd0\expndtw0\kerning0
+	<span v-text=\cf4 "msg"\cf2 ></span>\cf5 \
+\cf6 	<!-- same as -->\cf5 \
+\cf2 	<span>\cf5 \{\{msg\}\}\cf2 </span>
+\f1 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf0 \
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0 \
+
+\f0\b v-once
+\f1\b0 \
+* renders element once\
+* Children only get rendered once\
+* Optimizes performance\
+\
+
+\f0\b v-html\
+* 
+\f1\b0 Updates the element\'92s innerHTML. Can import tags\
+* Can\'92t nest bindings\
+* Only bind to HTML you trust\
+* Do not bind to user-generated HTML\
+	* Prevents website attacks\
+\
+
+\f0\b v-bind\
+\pard\pardeftab720\sl380\partightenfactor0
+\cf7 \cb3 \expnd0\expndtw0\kerning0
+Shorthand:\cf8 \'a0
+\f2\b0 \cf9 :
+\f1 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0 * Designed to bind to HTML attributes\
+* Bind data property values to HTML attributes\
+\
+\
+
+\fs32 Using JavaScript Expressions
+\f0\b \
+
+\f1\b0\fs24 $ used in jQuery can\'92t be used in Vue expressions. However, there is a way\'85\
+	May conflict with vue\
+\
+\
+
+\f0\b\fs32 Binding to text fields
+\f1\b0 \
+
+\fs24 \
+Input tag, textarea tag\
+\
+
+\f0\b v-model
+\f1\b0 \
+Binds to html input element\
+Creates a two-way binding on a form input element or a component\
+\
+
+\f0\b Text area
+\f1\b0 \
+Used to collect multi-line text input\
+	ex. eMails\
+\
+\
+
+\f0\b\fs32 Binding to checkboxes
+\f1\b0 \
+
+\fs24 Use when you want a user to\'85\
+	Choose a single value\
+	Make multiple choices (checkbox list)\
+\
+\
+\
+
+\f0\b\fs32 Binding to Drop Down Lists
+\f1\b0 \
+
+\fs24 Make single/multiple choices using element selection\
+\
+\
+
+\f0\b\fs32 Trim Modifier\
+
+\f1\b0\fs24 Removes whitespace\
+Removes leading and trailing whitespace\
+Includes spaces, tabs, and line breaks\
+\
+\
+\
+
+\f0\b\fs32 Number Modifier
+\f1\b0 \
+
+\fs24 Tries to cast user input to a number\
+HTML elements return values as strings\
+Tries to get a number object\
+\
+
+\f0\b\fs32 Lazily Binding Values
+\f1\b0 \
+
+\fs24 HTML on change event - fires when an input element\'92s value is modified\
+Fires after an input element has lost the focus\
+Ex: Type in input tag, click outside of input tag, query will display in our examples\
+\
+\
+
+\f0\b\fs32 Prevent Modifier
+\f1\b0\fs24 \
+Lets you bypass the default event behavior\
+Representation of JS\'92s preventDefault method\
+\
+
+\f0\b\fs32 Stop Modifier\
+
+\f1\b0\fs24 Ceases event propagation\
+	Less code gets executed\
+	More predictable code\
+Asdf\
+\
+Same Idea: {\field{\*\fldinst{HYPERLINK "https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_event_stoppropagation"}}{\fldrslt 
+\f3 \cf10 \expnd0\expndtw0\kerning0
+\ul \ulc10 https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_event_stoppropagation}}\
+\
+
+\f0\b\fs32 Self Modifier
+\f1\b0 \
+
+\fs24 Triggers event if element is originator\
+Only concerned with the target\
+<div @click=\'93grandparent\'94>\
+	<div @click=\'93parent\'94>\
+		<div @click.self=\'93executeSearch\'94>\
+If executeSearch is clicked, both parent and grandparent will also be executed.\
+\
+If parent has the self modifier and executeSearch is clicked, parent will not execute, but grandparent will.\
+If parent is clicked, then parent and grandparent will be executed, not executeSearch`\
+\
+
+\f0\b\fs32 Once Modifier
+\fs24 \
+
+\f1\b0 Run an event only one time\
+Removes the event handler after the event is fired\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab560\pardirnatural\partightenfactor0
+
+\f4 \cf0 {{\NeXTGraphic Screen Shot 2019-06-25 at 4.21.19 PM.png \width24020 \height10920 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab560\pardirnatural\partightenfactor0
+
+\f1 \cf0 \
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab560\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\b \cf0 Note: You can chain modifiers together to prevent event propagation
+\f1\b0 \
+\
+Grandparent\
+	stop.self parent\
+		execute\
+\
+\
+
+\f0\b\fs32 Reacting to Keyed Events
+\f1\b0 \
+
+\fs24 \
+
+\f0\b Key modifiers
+\f1\b0 \
+Useful for shortcut keys\
+\
+
+\f0\b\fs32 Reacting to Mouse Events\
+
+\f1\b0\fs24 left modifier, right modifier\
+mouseDown\
+mouseUp\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab560\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab560\pardirnatural\partightenfactor0
+
+\f4 \cf0 {{\NeXTGraphic Screen Shot 2019-06-26 at 10.02.48 AM.png \width19860 \height12940 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab560\pardirnatural\partightenfactor0
+
+\f1 \cf0 \
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0 \
+\
+\
+\
+
+\f0\b\fs32 Conditional Rendering and Rendering of List
+\f1\b0 \
+
+\fs24 Used\'85\
+	when an app is loaded\
+	at runtime\
+\
+
+\f0\b\fs32 v-cloak
+\fs24 \
+
+\f1\b0 hides elements until a view is compiled\
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0 \ul \ulc0 CSS\ulnone \
+[v-cloak] \{\
+	display: none;\
+\}\
+\
+\ul HTML\ulnone \
+<h2 v-cloak> \{\{ appName \}\} </h2>\
+\
+\
+
+\f0\b\fs28 Rendering Conditionally During Runtime
+\f1\b0 \
+
+\f0\b v-if, v-else\
+
+\f1\b0 	let you conditionally render content based on an expression\
+\
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\b\fs32 \cf0 v-show
+\f1\b0\fs24 \
+Conditionally show content at runtime\
+Similar to v-cloak\'85\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab560\pardirnatural\partightenfactor0
+
+\f4 \cf0 {{\NeXTGraphic Screen Shot 2019-06-26 at 10.43.00 AM.png \width21240 \height13460 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab560\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+
+\f5\b\fs32 v-for
+\f4\b0 \
+
+\fs24 used to loop through objects, lists, specific number of times\'85\
+\
+\
+
+\f5\b\fs32 Watchers\
+
+\f4\b0\fs24 Special functions that let you react to data property changes\
+\
+\
+
+\f5\b\fs32 Pluralsight github
+\f4\b0\fs24 \
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://github.com/ecofic/course-vue-getting-started/tree/master/src/module-04/using-event-handlers"}}{\fldrslt 
+\f3 \cf11 \expnd0\expndtw0\kerning0
+\ul \ulc11 \outl0\strokewidth0 \strokec11 https://github.com/ecofic/course-vue-getting-started/tree/master/src/module-04/using-event-handlers}}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab560\pardirnatural\partightenfactor0
+\cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab560\pardirnatural\partightenfactor0
+
+\f1 \cf0 \
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0 	}
